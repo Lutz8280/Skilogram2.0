@@ -1,7 +1,7 @@
 <?php
-session_start();
 require 'common.php';
 require 'Weather.php';
+require 'User.php';
 
 $content = '';
 

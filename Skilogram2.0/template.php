@@ -10,6 +10,7 @@
         </div>
         
         <a href="index.php">Home</a>
+        <a href="index.php?act=sign_up">Зарегистрироваться</a>
         <a href="index.php?act=sign_in">Войти</a>
         
         <hr/>
