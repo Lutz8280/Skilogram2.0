@@ -2,7 +2,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (empty($_POST['login']) || empty($_POST['password'])) {
             $_SESSION['message'] = 'Не введен логин или пароль';
-            header('Location: index.php?act=sign_in');
+            header('Location: index.php?act=sign_up');
             exit;
         } else {
             $user = new User($_POST['login'],$_POST['password']);
