@@ -1,8 +1,8 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=skilogram_709';
-$user = 'root';
-$password = 'root';
-$dbh = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-$dbh->exec("set names utf8");
-?>
+session_start();
 
+require 'config.php';
+require 'DBconnect.php';
+
+$connect = new DBconnect();
+$connect->connect($db_type, $db_host, $db_user, $db_pass, $db_name);
