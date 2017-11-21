@@ -1,32 +1,16 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (empty($_POST['login']) || empty($_POST['password'])) {
-        $_SESSION['message'] = 'Не введен логин или пароль';
-        header('Location: index.php?act=sign_in');
-        exit;
+        if (empty($_POST['login']) || empty($_POST['password'])) {
+            $_SESSION['message'] = 'Не введен логин или пароль';
+            header('Location: index.php?act=sign_in');
+            exit;
+        } else {
+            $user = new User($_POST['login'],$_POST['password']);
+            $user->signIn();
+        }
     }
 
-    // Проверям наличие логина в базе данных
-    $stmt = $dbh->prepare("SELECT * FROM user_auth WHERE login = ?");
-    $stmt ->execute([$_POST['login']]);
-    $result = $stmt->fetch();
-
-
-    if (!empty($result) && md5($_POST['password'] . $result['salt']) == $result['password']) {
-        $_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
-        setcookie ('last_login', $_REQUEST['login'], time() + 86400,'/');
-
-        $stmt = $dbh->prepare("SELECT * FROM user_data, user_auth WHERE user_data.user_id = user_auth.id");
-        $stmt ->execute();
-        $result2 = $stmt->fetch();
-
-        $_SESSION['user_name'] = $result2['author_name'];
-        header('Location: index.php');
-        exit;
-    } else {
-        $_SESSION['message'] = 'Неверный логин или пароль'; 
-    }
 }
 
 ?>
