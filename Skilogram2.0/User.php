@@ -54,3 +54,16 @@ class User {
         
         
 }
+
+
+Class Post {
+    
+    
+    Public function addPost () {
+        
+       } 
+    
+    Public function getPost() {
+        
+       } 
+} 
