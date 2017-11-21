@@ -60,7 +60,12 @@ Class Post {
     
     
     Public function addPost () {
-        
+         $stmt = DBconnect::$db->prepare("SELECT * FROM post, user_data WHERE post.user_id = user_data.user_id");
+        $stmt ->execute();
+        $result = $stmt->fetch();
+        Foreach (₽result as ₽post) {
+            
+           } 
        } 
     
     Public function getPost() {
